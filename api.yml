@@ -1,0 +1,42 @@
+openapi: 3.0.0
+# swagger : "2.0"
+info : 
+  title : Rest APi Assignment
+  description : Fetch api from external api then modify it
+  
+servers:
+  - url: http://localhost:8080
+    description: Local test server
+
+schemes : [http,https]
+paths:
+  /api/v1/todos :
+    get :
+      summary : Returns data from api
+      description : It will fetch Data from api then fillter the data
+      responses : 
+        200 : 
+          description : A json array of to_do data
+          content : 
+            application/json:
+              schema :
+                type: array
+                items:
+                  type : string
+  /api/v1/users/{id} :
+    get :
+      parameters:
+        - in: path
+          name: id   # Note the name is the same as in the path
+          required: true
+      summary :  Return Data from API
+      description : It will fetch data from two api then filter data and sends response
+      responses :
+        200 :
+          description : A json array of to_do data with user info
+          content :
+            application/json : 
+              schema :
+                type : array
+                items :
+                  type : string
